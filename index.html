@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Global Countdown</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+
+<div class="wrapper">
+
+  <div class="clock">
+    <p class="close-btn">x</p>
+    <div class="clock__heading">
+      <h2>New Arrivals</h2>
+      <h3>30% Off</h3>
+      <p>Ends in</p>
+    </div>
+    <div id="timer"></div>
+    <a href="#">Shop Now</a>
+  </div>
+
+</div>
+
+
+<script>
+"use strict";
+
+var deadline = "Fri, 10 June 2016 00:00:00 GMT-04:00";
+
+
+function getEndTime(endtime) {
+  var t = Date.parse(endtime) - (new Date()).getTime();
+  var end = Date.parse(endtime);
+  var g_current = (new Date().getTime());
+  var seconds = Math.floor((t/1000) % 60);
+  var minutes = Math.floor((t/1000/60) % 60);
+  var hours = Math.floor((t/(1000*60*60)) % 24);
+  var days = Math.floor(t/(1000*60*60*24));
+  return {
+    t, seconds, minutes, hours, days
+  };
+}
+
+function countdown(id, endtime) {
+  var clock = document.getElementById(id);
+  var timeinterval = setInterval(function() {
+    var t = getEndTime(endtime);
+    var days = ("0" + t.days).slice(-2);
+    var hours = ("0" + t.hours).slice(-2);
+    var minutes = ("0" + t.minutes).slice(-2);
+    var seconds = ("0" + t.seconds).slice(-2);
+   
+    clock.innerHTML = '<table>' +
+                        '<tr class="days">' +
+                          '<td colspan="2">' + days +'</td><td>days</td>' +
+                        '</tr>' +
+                        '<tr class="hours">' +
+                          '<td>' + hours + ':</td><td>' + minutes + ':</td><td>' + seconds + '</td>' +
+                        '</tr>' +
+                        '<tr class="units">' +
+                          '<td>hrs</td><td>min</td><td>sec</td>' +
+                        '</tr>' +
+                      '</table>';
+
+    if(t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }, 1000);
+}
+
+countdown('timer', deadline);
+
+</script>
+
+</body>
+</html>

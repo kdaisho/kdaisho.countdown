@@ -1,0 +1,92 @@
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, em, img, ol, ul, li, form, label,
+table, tbody, tfoot, thead, tr, th, td,
+article, aside, details, embed, 
+figure, footer, header, nav, section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+body {
+  background: #e1e6a5;
+}
+.wrapper {
+  width: 100%;
+}
+.clock {
+  width: 312px;
+  box-sizing: border-box;
+  background: #333;
+  margin: 200px auto 0;
+  padding: 3em 2em;
+}
+.close-btn {
+  text-align: right;
+  margin: -1.8em -1em 0 0;
+  padding: .1em .1em .6em;
+  cursor: pointer;
+  float: right;
+  width: 30px;
+}
+.clock__heading {
+  margin: 0 auto;
+}
+h2,
+h3,
+p,
+td,
+a {
+  font-family: "Helvetica", "Arial", sans-serif;
+  color: #fff;
+  letter-spacing: 2px;
+}
+h2 {
+  font-size: 1.75em;
+  text-transform: uppercase;
+  text-align: left;
+}
+h3 {
+  color: #cedc36;
+  font-size: 3.3em;
+  text-transform: uppercase;
+}
+p {
+  font-size: 1.4em;
+  text-align: left;
+}
+table {
+  font-size: 40px;
+  width: 250px;
+  margin: 0 auto .5em;
+}
+td {
+  font-size: 1.4em;
+  text-align: center;
+}
+.days td[colspan="2"] {
+  font-size: 3.6em;
+  color: #e7578d;
+}
+.days td,
+.units td {
+  font-size: .8em;
+}
+.hours td {
+  color: #e7578d;
+}
+a {
+  text-transform: uppercase;
+  text-decoration: none;
+  background: transparent;
+  border: 2px solid #fff;
+  display: block;
+  margin: 0 auto;
+  width: 240px;
+  text-align: center;
+  padding: .8em 0;
+}
+
