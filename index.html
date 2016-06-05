@@ -28,31 +28,37 @@
 <script>
 "use strict";
 
-var deadline = "Fri, 10 June 2016 00:00:00 GMT-04:00";
+var deadline = "Wed, 29 June 2016 18:30:00 GMT-04:00";
 
 
 function getEndTime(endtime) {
   var t = Date.parse(endtime) - (new Date()).getTime();
-  var end = Date.parse(endtime);
-  var g_current = (new Date().getTime());
+  // var end = Date.parse(endtime);
+  // var g_current = (new Date().getTime());
   var seconds = Math.floor((t/1000) % 60);
   var minutes = Math.floor((t/1000/60) % 60);
   var hours = Math.floor((t/(1000*60*60)) % 24);
   var days = Math.floor(t/(1000*60*60*24));
+
   return {
-    t, seconds, minutes, hours, days
+    t: t,
+    seconds: seconds,
+    minutes: minutes,
+    hours: hours,
+    days: days
   };
 }
 
 function countdown(id, endtime) {
   var clock = document.getElementById(id);
   var timeinterval = setInterval(function() {
-    var t = getEndTime(endtime);
-    var days = ("0" + t.days).slice(-2);
-    var hours = ("0" + t.hours).slice(-2);
-    var minutes = ("0" + t.minutes).slice(-2);
-    var seconds = ("0" + t.seconds).slice(-2);
-   
+    var end = getEndTime(endtime);
+    var remain = end.t;
+    var days = ("0" + end.days).slice(-2);
+    var hours = ("0" + end.hours).slice(-2);
+    var minutes = ("0" + end.minutes).slice(-2);
+    var seconds = ("0" + end.seconds).slice(-2);
+
     clock.innerHTML = '<table>' +
                         '<tr class="days">' +
                           '<td colspan="2">' + days +'</td><td>days</td>' +
@@ -64,8 +70,7 @@ function countdown(id, endtime) {
                           '<td>hrs</td><td>min</td><td>sec</td>' +
                         '</tr>' +
                       '</table>';
-
-    if(t.total <= 0) {
+    if (remain <= 1000) {
       clearInterval(timeinterval);
     }
   }, 1000);
